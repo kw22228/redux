@@ -1,14 +1,25 @@
 /* @jsx createElement */
-import { render, createElement } from './react';
+import { render, createElement, Component } from './react';
 
-const vdom = (
+class Hello extends Component {
+    render() {
+        return <h6>{this.props.children}</h6>;
+    }
+}
+
+function Item(props) {
+    return <li style={`color:${props.color}`}>{props.children}</li>;
+}
+const App = () => (
     <div id="wrap" style="color:orange">
         첫번째 엘리먼트!!
-        <h1 style="color:blue">
-            VirtualDom에 대해서!!!
-            <h6>hello</h6>
-        </h1>
+        <Hello>Hello Children.</Hello>
+        <ul>
+            <Item color="red">첫번째 아이템</Item>
+            <Item color="blue" children="두번째 아이템" />
+            <Item color="violet">세번째 아이템</Item>
+        </ul>
     </div>
 );
 
-render(vdom, document.querySelector('#root'));
+render(<App />, document.querySelector('#root'));
