@@ -1,10 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+const add = document.querySelector('#add');
+const minus = document.querySelector('#minus');
+const number = document.querySelector('span');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-);
+const setCount = e => {
+    let count = 0;
+
+    return {
+        add() {
+            number.innerHTML = ++count;
+        },
+        minus() {
+            number.innerHTML = --count;
+        },
+    };
+};
+
+const count = setCount();
+add.addEventListener('click', count.add);
+minus.addEventListener('click', count.minus);
