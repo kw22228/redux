@@ -18,3 +18,32 @@
 
 7. subscribe (observer)
    store가 변화하는걸 감지한다. (reducer에서 action을 받고 새로운 state를 return)
+
+---
+
+### react-redux
+
+1. npm install redux react-redux
+   리액트용 리덕스를 설치
+
+2. index.js
+   import { Provider } from 'react-redux';
+
+```javascript
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    // <React.StrictMode>
+    <Provider store={store}>
+        <App />
+    </Provider>
+    // </React.StrictMode>
+);
+```
+
+3. mapStateToProps(state, props)
+   state는 redux store로부터 온 데이터
+   props는 component로 부터온 properties
+
+4. export default connect(mapStateToProps)(Home);
+   mapStateToProps state를 return하면 Home 컴포넌트의 props로 받음
+   connect가 Home의 props로 넘겨줌.
