@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 
-export const addTodo = text => {
+const addTodo = text => {
     return {
         type: ADD_TODO,
         text,
@@ -11,7 +11,7 @@ export const addTodo = text => {
     };
 };
 
-export const deleteTodo = id => {
+const deleteTodo = id => {
     return {
         type: DELETE_TODO,
         id,
@@ -30,5 +30,10 @@ const reducer = (state = [], action) => {
 };
 
 const store = createStore(reducer);
+
+export const actionCreateors = {
+    addTodo,
+    deleteTodo,
+};
 
 export default store;
