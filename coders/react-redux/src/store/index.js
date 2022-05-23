@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
+const TODOS_KEY = 'todosList';
 
 const addTodo = text => {
     return {
@@ -18,12 +19,21 @@ const deleteTodo = id => {
     };
 };
 
-const reducer = (state = [], action) => {
+const reducer = (
+    state = localStorage.getItem(TODOS_KEY) ? JSON.parse(localStorage.getItem(TODOS_KEY)) : [],
+    action
+) => {
     switch (action.type) {
         case ADD_TODO:
-            return [{ text: action.text, id: action.id }, ...state];
+            const addState = [{ text: action.text, id: action.id }, ...state];
+            localStorage.setItem(TODOS_KEY, JSON.stringify(addState));
+
+            return addState;
         case DELETE_TODO:
-            return state.filter(({ id }) => id !== action.id);
+            const deleteState = state.filter(({ id }) => id !== action.id);
+            localStorage.setItem(TODOS_KEY, JSON.stringify(deleteState));
+
+            return deleteState;
         default:
             return state;
     }

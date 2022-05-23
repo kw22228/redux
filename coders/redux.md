@@ -47,3 +47,6 @@ root.render(
 4. export default connect(mapStateToProps)(Home);
    mapStateToProps state를 return하면 Home 컴포넌트의 props로 받음
    connect가 Home의 props로 넘겨줌.
+
+5. export default connect(null, mapDispatchToProps)(Todo);
+   mapDispatchProps가 컴포넌트의 props로 Dispatch 메소드를 넘겨줌

@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import { actionCreateors } from '../store';
 import Todo from '../components/Todo';
 
-const Home = ({ todos, addTodo, deleteTodo }) => {
+const Home = ({ todos, addTodo }) => {
     const [text, setText] = useState('');
     const onChangeHandler = e => {
         setText(e.target.value);
     };
     const onSubmitHandler = e => {
         e.preventDefault();
+        if (!text) {
+            return;
+        }
+
         addTodo(text);
         setText('');
     };
 
-    const onClickDelete = e => {
-        const id = parseInt(e.target.parentNode.id);
-        deleteTodo(id);
-    };
     return (
         <>
             <div>
@@ -39,11 +39,11 @@ const Home = ({ todos, addTodo, deleteTodo }) => {
     );
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
     return { todos: state };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = dispatch => {
     return {
         addTodo: text => dispatch(actionCreateors.addTodo(text)),
     };
