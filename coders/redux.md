@@ -50,3 +50,33 @@ root.render(
 
 5. export default connect(null, mapDispatchToProps)(Todo);
    mapDispatchProps가 컴포넌트의 props로 Dispatch 메소드를 넘겨줌
+
+---
+
+### redux-toolkit
+
+1. createAction
+
+```javascript
+const addTodo = createAction('ADD_TODO');
+
+case addTodo.type:
+   const addState = [{ text: action.payload.text, id: action.payload.id }, ...state];
+
+   return addState;
+```
+
+-   dispatch는 무조건 action.payload를 타고 옴
+
+```javascript
+const mapDispatchToProps = dispatch => {
+    return {
+        addTodo: (text, id) =>
+            dispatch(
+                actionCreateors.addTodo(
+                    { text, id } //payload로 들어감
+                )
+            ),
+    };
+};
+```

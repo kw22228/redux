@@ -14,7 +14,8 @@ const Home = ({ todos, addTodo }) => {
             return;
         }
 
-        addTodo(text);
+        const id = Date.now();
+        addTodo(text, id);
         setText('');
     };
 
@@ -45,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addTodo: text => dispatch(actionCreateors.addTodo(text)),
+        addTodo: (text, id) => dispatch(actionCreateors.addTodo({ text, id })),
     };
 };
 
