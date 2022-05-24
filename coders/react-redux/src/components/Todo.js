@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionCreateors } from '../store';
+import { remove } from '../store';
 
 const Todo = ({ text, id, deleteTodo }) => {
     return (
@@ -13,7 +13,7 @@ const Todo = ({ text, id, deleteTodo }) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        deleteTodo: () => dispatch(actionCreateors.deleteTodo(props.id)),
+        deleteTodo: () => dispatch(remove(props.id)),
     };
 };
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { actionCreateors } from '../store';
+import { remove } from '../store';
 
 const Detail = ({ todos, deleteTodo }) => {
     const params = useParams();
@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        deleteTodo: id => dispatch(actionCreateors.deleteTodo(id)),
+        deleteTodo: id => dispatch(remove(id)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

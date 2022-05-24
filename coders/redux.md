@@ -80,3 +80,15 @@ const mapDispatchToProps = dispatch => {
     };
 };
 ```
+
+2. createRudcer
+   switch case문을 사용할 필요없음.
+   state를 mutate해도 상관없음(state.push 사용가능) 대신 return을 하면 안된다.
+   return을 할때에는 무조건 new state로 return해준다.
+
+3. configureStore
+   크롬 익스텐션에서 redux dev tools를 사용할 수 있다.
+
+4. createSlice
+
+-   name, initailState, reducers, actions 한번에 선언가능.
