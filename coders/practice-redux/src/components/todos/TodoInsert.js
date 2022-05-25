@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TodoInsert = () => {
+const TodoInsert = ({ addHandler }) => {
     const [text, setText] = useState('');
 
     const textChangeHandler = e => {
@@ -10,6 +10,7 @@ const TodoInsert = () => {
     const onSubmitHandler = e => {
         e.preventDefault();
 
+        addHandler(text);
         setText('');
     };
     return (
