@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const TodoReducer = createSlice({
-    name: 'todosReducer',
+const todoReducer = createSlice({
+    name: 'todoReducer',
     initialState: [],
     reducers: {
         add: {
             reducer: (state, action) => {
-                state.push(action.payload);
+                state.unshift(action.payload);
             },
-            prepare: ({ text }) => ({
+            prepare: text => ({
                 payload: {
                     id: Date.now(),
                     text,
@@ -16,8 +16,9 @@ const TodoReducer = createSlice({
                 },
             }),
         },
+        remove: (state, action) => state.filter(todo => todo.id !== action.payload.id),
     },
 });
 
-export default TodoReducer;
-export const { add } = TodoReducer.actions;
+export const { add, remove } = todoReducer.actions;
+export default todoReducer;

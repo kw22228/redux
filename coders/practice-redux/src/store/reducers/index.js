@@ -1,1 +1,2 @@
-export { default as TodoReducer } from './TodoReducer';
+export { default as todoReducer } from './todoReducer';
+export * from './todoReducer';
