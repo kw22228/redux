@@ -1,18 +1,13 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { add } from '../store';
 import Todo from '../components/Todo';
 
-const Home = () => {
+const Home = ({ todos, addTodo }) => {
     const [text, setText] = useState('');
-
-    const todos = useSelector(state => state);
-    const dispatch = useDispatch();
-
     const onChangeHandler = e => {
         setText(e.target.value);
     };
-
     const onSubmitHandler = e => {
         e.preventDefault();
         if (!text) {
@@ -20,7 +15,7 @@ const Home = () => {
         }
 
         const id = Date.now();
-        dispatch(add({ text, id }));
+        addTodo(text, id);
         setText('');
     };
 
@@ -45,4 +40,14 @@ const Home = () => {
     );
 };
 
-export default Home;
+const mapStateToProps = state => {
+    return { todos: state };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addTodo: (text, id) => dispatch(add({ text, id })),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
