@@ -7,6 +7,7 @@ const Home = () => {
     const [text, setText] = useState('');
 
     const todos = useSelector(state => state);
+    console.log(todos);
     const dispatch = useDispatch();
 
     const onChangeHandler = e => {
