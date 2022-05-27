@@ -1,0 +1,3 @@
+export const COUNT_INCREASE = 'COUNT INCREASE';
+export const COUNT_DECREASE = 'COUNT DECREASE';
+export const COUNT_RESET = 'COUNT RESET';
