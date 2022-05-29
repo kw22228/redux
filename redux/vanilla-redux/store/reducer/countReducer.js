@@ -1,7 +1,7 @@
 import * as ActionType from '../action-type';
 
 //state값 수정(mutate)
-const initialState = { count: 10 };
+const initialState = { count: 1 };
 export function countReducer(state = { ...initialState }, action) {
     const count = action.payload.count ? action.payload.count : 1;
 
