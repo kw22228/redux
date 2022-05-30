@@ -1,8 +1,9 @@
-import { createStore } from './redux.js';
-import * as Actions from './actions.js';
-import reducer from './reducer.js';
+import { createStore } from './store/redux.js';
+import * as Actions from './store/actions/actions.js';
+import reducer from './store/reducer/reducer.js';
+import * as middlewares from './store/middlewares/index.js';
 
-const store = createStore(reducer);
+const store = createStore(reducer, [middlewares.logger]);
 
 const counterDisplay = document.querySelector('#counter');
 const btnIncrease = document.querySelector('#btn-increase');
